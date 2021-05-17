@@ -1,0 +1,47 @@
+1.查看tomcate的即时日志
+进入到tomcate的log文件夹下，执行：tail -f localhost.2019-08-14.log 
+
+2.启动tomcate：
+sh startup.sh
+
+3.查看java进程
+ps -ef | grep java
+
+4.杀进程 
+kill -9 18014
+
+contens7虚拟机命令：
+1.重启网络
+service network restart
+
+2.查看网址
+ip addr
+3.关闭防火墙
+service firewalld stop
+
+Docker命令：
+docker search mysql：搜索镜像
+docker pull 镜像名：下载镜像
+docker images：查看当前环境所有镜像
+docker rm image-id：删除镜像
+docker --name mytomcate -d -p 8888:8080 tomcate：运行容器,将虚拟机8888端口映射给容器8080端口
+docker ps：查看运行的容器
+docker stop 容器id：停止容器
+docker logs 容器id：查看容器日志
+
+hub.docker.com各个容器网址
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
