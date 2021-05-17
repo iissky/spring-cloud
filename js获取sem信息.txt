@@ -1,0 +1,55 @@
+//方法
+function GetQueryString() {    
+    var refer = document.referrer;
+    refer = refer + '&';
+    var matches = '';   
+    if(refer.match(/(www|m|youxuan)\.baidu/)){
+        matches = refer.match(/\W(wd|word)\=(.*?)\&/i);
+        if(matches){
+            matches = matches[2];
+        }
+    };
+    if(refer.match(/m\.sm\.cn/)) {      
+        matches = refer.match(/q\=(.*?)\&/i);
+        if(matches) {
+            matches = matches[1];
+        }
+    };
+    if(refer.match(/sogou\.com/)) {
+        matches = refer.match(/keyword\=(.*?)\&/i);
+        if(matches) {
+            matches = matches[1];
+        }
+    };
+   if(refer.match(/so\.com/)) {
+        matches = refer.match(/q\=(.*?)\&/i);
+        if(matches) {
+            matches = matches[1];
+        }
+    };
+    if(matches && matches.indexOf("%") == 0) {
+        matches = decodeURIComponent(matches);
+    } else {
+        matches = '';
+    };
+
+    return matches;
+};
+
+// 调用方法
+var $wd=GetQueryString();
+if($wd&&$wd.length>0){
+
+}else{
+    $wd=GetQueryString("word")
+}
+
+if($wd&&$wd.length>0){
+    $wd=decodeURIComponent($wd);
+
+    $line='关于【“'+$wd+'”】的问题,很荣幸为您解答疑问！';
+}else{
+
+    $line=' 您好，这里是......，请问有什么可以帮到您？';
+}
+$('#textFirst').html($line+"<span class=\"red\">（咨询）</span>");
